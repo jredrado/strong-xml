@@ -1,5 +1,7 @@
-use std::borrow::Cow;
-use std::iter::{Iterator, Peekable};
+use alloc::borrow::Cow;
+use alloc::format;
+use alloc::borrow::ToOwned;
+use core::iter::{Iterator, Peekable};
 
 use xmlparser::ElementEnd;
 use xmlparser::Error;

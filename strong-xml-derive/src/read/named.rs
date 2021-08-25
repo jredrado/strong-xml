@@ -283,11 +283,11 @@ fn from_str(ty: &Type) -> TokenStream {
             match &*__value {
                 "t" | "true" | "y" | "yes" | "on" | "1" => true,
                 "f" | "false" | "n" | "no" | "off" | "0" => false,
-                _ => <bool as std::str::FromStr>::from_str(&__value).map_err(|e| XmlError::FromStr(e.into()))?
+                _ => <bool as core::str::FromStr>::from_str(&__value).map_err(|e| XmlError::FromStr(e.to_string()))?
             }
         },
         Type::T(ty) | Type::OptionT(ty) | Type::VecT(ty) => quote! {
-            <#ty as std::str::FromStr>::from_str(&__value).map_err(|e| XmlError::FromStr(e.into()))?
+            <#ty as core::str::FromStr>::from_str(&__value).map_err(|e| XmlError::FromStr(e.to_string()))?
         },
     }
 }

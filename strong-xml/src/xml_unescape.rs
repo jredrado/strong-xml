@@ -1,6 +1,7 @@
 use memchr::memchr;
-use std::borrow::Cow;
-use std::char;
+use alloc::borrow::Cow;
+use alloc::string::String;
+use core::char;
 
 use crate::{XmlError, XmlResult};
 

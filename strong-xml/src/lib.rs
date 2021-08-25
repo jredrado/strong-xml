@@ -297,6 +297,10 @@
 //!
 //! MIT
 
+#![no_std]
+
+extern crate alloc;
+
 #[cfg(feature = "log")]
 mod log;
 #[cfg(not(feature = "log"))]
@@ -313,14 +317,14 @@ mod xml_escape;
 mod xml_read;
 mod xml_reader;
 mod xml_unescape;
-mod xml_write;
-mod xml_writer;
+//mod xml_write;
+//mod xml_writer;
 
 pub use self::xml_error::{XmlError, XmlResult};
 pub use self::xml_read::{XmlRead, XmlReadOwned};
 pub use self::xml_reader::XmlReader;
-pub use self::xml_write::XmlWrite;
-pub use self::xml_writer::XmlWriter;
+//pub use self::xml_write::XmlWrite;
+//pub use self::xml_writer::XmlWriter;
 
 pub use strong_xml_derive::{XmlRead, XmlWrite};
 

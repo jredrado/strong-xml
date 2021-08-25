@@ -1,20 +1,22 @@
-use std::{error::Error, io::Error as IOError, str::Utf8Error, string::FromUtf8Error};
+//use std::{error::Error, io::Error as IOError, str::Utf8Error, string::FromUtf8Error};
 use xmlparser::Error as ParserError;
+use alloc::string::String;
 
 #[derive(Debug)]
 pub enum XmlError {
-    IO(IOError),
+    //IO(IOError),
     Parser(ParserError),
-    Utf8(Utf8Error),
+    //Utf8(Utf8Error),
     UnexpectedEof,
     UnexpectedToken { token: String },
     TagMismatch { expected: String, found: String },
     MissingField { name: String, field: String },
     UnterminatedEntity { entity: String },
     UnrecognizedSymbol { symbol: String },
-    FromStr(Box<dyn Error + Send + Sync>),
+    FromStr(String)
 }
 
+/*
 impl From<IOError> for XmlError {
     fn from(err: IOError) -> Self {
         XmlError::IO(err)
@@ -32,6 +34,7 @@ impl From<FromUtf8Error> for XmlError {
         XmlError::Utf8(err.utf8_error())
     }
 }
+*/
 
 impl From<ParserError> for XmlError {
     fn from(err: ParserError) -> Self {
@@ -42,6 +45,7 @@ impl From<ParserError> for XmlError {
 /// Specialized `Result` which the error value is `Error`.
 pub type XmlResult<T> = Result<T, XmlError>;
 
+/*
 impl Error for XmlError {
     fn source(&self) -> Option<&(dyn Error + 'static)> {
         use XmlError::*;
@@ -78,3 +82,4 @@ impl std::fmt::Display for XmlError {
         }
     }
 }
+*/
