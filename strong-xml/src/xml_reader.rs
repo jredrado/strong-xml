@@ -68,7 +68,14 @@ impl<'a> XmlReader<'a> {
                             found: tag.to_owned(),
                         });
                     }
-                }
+                },
+                Token::ElementEnd {
+                    end: Empty,
+                    span
+                } => {
+                    break;
+                },
+
                 token => {
                     return Err(XmlError::UnexpectedToken {
                         token: format!("{:?}", token),
