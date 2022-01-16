@@ -1,6 +1,6 @@
 [package]
 name = "strong-xml"
-version = "0.6.3"
+version = "0.6.4"
 repository = "https://github.com/PoiScript/strong-xml"
 description = "Strong typed xml, based on xmlparser."
 license = "MIT"
